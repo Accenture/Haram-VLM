@@ -58,7 +58,10 @@ split by that tag. That tagging is what makes the contamination cost in Table 5
 measurable rather than assumed.
 
 ```bash
+# CPU only -- needs COCO annotations, downloads just the images it selects
 python protocol/generate_coco_pope.py --help
+
+# GPU + the 'haram' env (loads Phi-3-Vision plus a LoRA adapter)
 python protocol/eval_pope.py --help
 ```
 

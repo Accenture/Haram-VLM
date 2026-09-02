@@ -6,10 +6,12 @@ Rank-based escalation (escalate the top-k% most-risky; sweep k) is the consisten
 metric. We report token savings to reach within 0.5pt of always-high accuracy for:
   confidence (training-free baseline), learned risk head, combined (rank fusion),
   and an oracle (escalate exactly the scout-wrong queries) as the ceiling.
-Qwen3 has scout embeddings (learned head); Phi-3 fine-tuned/base report confidence+oracle
-from their saved adaptive records.
+The confidence and oracle columns for all four architectures reproduce from the saved
+adaptive records in results/ with no GPU. The learned and combined columns additionally
+need the Qwen3 scout-feature dumps (risk_head/dump_features_qwen3.py); they are skipped
+with a note if those are absent.
 """
-import json, os
+import argparse, json, os
 import numpy as np
 import torch
 
@@ -53,13 +55,14 @@ def train_head(Xtr, ytr, ep=300, wd=2e-3, lr=5e-3):
     return lambda X: torch.sigmoid(lin(torch.tensor((X - mu) / sd, dtype=torch.float32)).squeeze(-1)).detach().numpy()
 
 
-def qwen3_rows():
-    tr = np.load(os.path.join(FEAT, "train.npz"))
+def qwen3_rows(feat=None):
+    feat = feat or FEAT
+    tr = np.load(os.path.join(feat, "train.npz"))
     Xtr = np.concatenate([tr["emb"].astype(np.float32), tr["conf_low"][:, None]], 1)
     head = train_head(Xtr, (tr["pred_low"] != tr["label"]).astype(np.float32))
     out = {}
     for s in SPLITS:
-        te = np.load(os.path.join(FEAT, f"test_{s}.npz"))
+        te = np.load(os.path.join(feat, f"test_{s}.npz"))
         pl, ph, lb = te["pred_low"], te["pred_high"], te["label"]
         tl, th = te["tok_low"].astype(float), te["tok_high"].astype(float)
         conf = 1 - te["conf_low"]
@@ -71,7 +74,7 @@ def qwen3_rows():
     return out
 
 
-def phi3_rows(d):
+def record_rows(d):
     out = {}
     for s in SPLITS:
         recs = json.load(open(os.path.join(d, f"adaptive_{s}.json")))["records"]
@@ -89,19 +92,47 @@ def fmt(v):
     return f"{v[0]:4.0f}% (esc {v[1]:.0f}%)" if v else "  -- (can't reach)"
 
 
-if __name__ == "__main__":
+def main():
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--results", default=os.environ.get("HARAM_RESULTS", HARAM_ROOT + "/results"),
+                    help="directory holding the adaptive_pareto* dirs (default: $HARAM_RESULTS)")
+    ap.add_argument("--features", default=FEAT,
+                    help="Qwen3 scout-feature dump dir, for the learned/combined columns "
+                         "(default: $HARAM_WORK/risk_features)")
+    args = ap.parse_args()
+
     print("Rank-based token savings to reach within 0.5pt of always-high accuracy.\n")
-    results = os.environ.get("HARAM_RESULTS", HARAM_ROOT + "/results")
-    models = [("Phi-3 fine-tuned", phi3_rows(results + "/adaptive_pareto")),
-              ("Phi-3 raw base", phi3_rows(results + "/adaptive_pareto_base")),
-              ("Qwen3-VL-8B (raw)", qwen3_rows())]
-    for name, rows in models:
+
+    # (label, subdir, needs_features) -- Table 1's four blocks, in paper order
+    BLOCKS = [("HARAM-VLM (Phi-3, fine-tuned)", "adaptive_pareto", False),
+              ("Phi-3-Vision, raw",             "adaptive_pareto_base", False),
+              ("Qwen3-VL-8B, raw",              "adaptive_pareto_qwen3", True),
+              ("InternVL3-8B, raw",             "adaptive_pareto_internvl", False)]
+
+    for name, sub, wants_feats in BLOCKS:
+        d = os.path.join(args.results, sub)
+        if not os.path.isdir(d):
+            print(f"== {name} ==\n  skipped: no {d}\n")
+            continue
+        rows = record_rows(d)
+        if wants_feats:
+            if os.path.exists(os.path.join(args.features, "train.npz")):
+                for sp, v in qwen3_rows(args.features).items():
+                    rows[sp].update(v)
+            else:
+                print(f"  note: {args.features}/train.npz absent -> learned/combined columns\n"
+                      f"        skipped for {name}. Regenerate with "
+                      f"risk_head/dump_features_qwen3.py.")
         print(f"== {name} ==")
-        for s in SPLITS:
-            r = rows[s]
-            line = f"  {s:12}"
-            for sig in ["conf", "learned", "combined", "oracle"]:
-                if sig in r:
-                    line += f"  {sig}:{fmt(r[sig])}"
+        for sp in SPLITS:
+            line = f"  {sp:12}"
+            for sig in ("conf", "learned", "combined", "oracle"):
+                if sig in rows[sp]:
+                    line += f"  {sig}:{fmt(rows[sp][sig])}"
             print(line)
         print()
+
+
+if __name__ == "__main__":
+    main()

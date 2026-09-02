@@ -23,7 +23,7 @@ authors:
   - given-names: Jiayun
     family-names: Wang
     affiliation: "Center for Advanced AI, Accenture"
-repository-code: "https://github.com/samaonline/HARAM-VLM"
+repository-code: "https://github.com/Accenture/Haram-VLM"
 license: Apache-2.0
 keywords:
   - vision-language models

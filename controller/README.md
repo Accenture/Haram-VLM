@@ -20,7 +20,8 @@ from a single GPU run.
 | `adaptive_infer_internvl.py` | InternVL3-8B | dynamic tiling, 1 → 12 tiles | `qwen3` |
 | `adaptive_infer_vstar.py` | InternVL3-8B on V\*Bench | dynamic tiling, 1 → 24 tiles | `qwen3` |
 
-`rank_based_compare.py` is the table generator. It reads the dumps above and reports, per
+`rank_based_compare.py` is the table generator — **CPU-only**, no VLM loaded. It reads the
+dumps above and reports, per
 split, the token saving needed to reach within 0.5pt of always-high accuracy under four
 escalation rankings: **confidence** (training-free), **learned** (the head in
 [`../risk_head/`](../risk_head/)), **combined** (rank fusion), and **oracle** (escalate
@@ -42,7 +43,21 @@ consistent metric throughout the paper.
 - Escalated queries pay for both passes. The cost accounting in these scripts includes
   both; a shared low-level encoder could amortise the scout, which is future work.
 
+## Reproducing Table 1 without a GPU
+
+Because both passes are already recorded in [`../results/`](../results/), the confidence
+and oracle columns for all four architectures reproduce with no GPU and no downloads:
+
+```bash
+python controller/rank_based_compare.py
+```
+
+That prints all twelve rows of Table 1. The *learned* and *combined* columns additionally
+need the Qwen3 scout-feature dumps from [`../risk_head/`](../risk_head/); they are skipped
+with a note if absent.
+
+To re-run the underlying inference (GPU required):
+
 ```bash
 python controller/adaptive_infer_qwen3.py --help
-python controller/rank_based_compare.py --help
 ```

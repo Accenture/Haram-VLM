@@ -1,7 +1,8 @@
 # HARAM-VLM: the fine-tuned variant
 
 Paper: **Sec. 4.3** (the learned risk alternative), **App. A** (architecture and
-multi-task objective), **Sec. 6.7** (ablations). Produces Tables 4–6.
+multi-task objective), **Sec. 6.7** (ablations). Produces Tables 4 and 5; its recipe is
+the hyperparameter listing in Table 6 (App. C).
 
 This is the *lightly fine-tuned* variant used to study how training affects the
 controller. **The training-free controller in [`../controller/`](../controller/) does not

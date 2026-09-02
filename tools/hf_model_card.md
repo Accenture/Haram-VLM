@@ -16,7 +16,7 @@ pipeline_tag: image-text-to-text
 # HARAM-VLM — Phi-3-Vision LoRA adapters
 
 Hallucination-aware adaptive-resolution adapters for `microsoft/Phi-3-vision-128k-instruct`.
-Code and evaluation harness: **https://github.com/samaonline/HARAM-VLM**
+Code and evaluation harness: **https://github.com/Accenture/Haram-VLM**
 
 These are **PEFT LoRA adapters**, not full models. You need the Phi-3-Vision base weights,
 which are downloaded separately from Microsoft's repository.

@@ -12,7 +12,7 @@
 
 ## 🎯 Overview
 
-A comprehensive, modular framework for validating the HARAM-VLM hypothesis across multiple Vision-Language Models (VLMs) using real-world benchmarks. This framework tests whether adaptive resolution based on hallucination risk can improve both accuracy and efficiency in VLMs.
+A modular harness for sweeping several vision-language models across input resolutions on POPE, and reporting the resulting hallucination rates and token costs. It predates the paper's controller and clean protocol; see the note above.
 
 ### Key Features
 
@@ -228,7 +228,11 @@ Based on the HARAM-VLM hypothesis, you should observe:
 3. **Attention Diffusion**: Performance degradation beyond 896-1024px
 4. **Model Consistency**: Pattern should hold across different architectures
 
-### Example Results
+### Example output format
+
+The block below shows the *shape* of the tool's output, with made-up numbers. It is not a
+measurement and must not be cited — the Qwen3-VL-2B path it imitates was a simulated
+script, removed from this release.
 
 ```
 Model: Qwen3-VL-2B
@@ -237,7 +241,7 @@ Model: Qwen3-VL-2B
   672px: Hallucination Rate = 7.1%, Tokens = 2304  ← Optimal
   896px: Hallucination Rate = 8.2%, Tokens = 4096
 
-Correlation: r = -0.85, p < 0.001 ✅
+Correlation: r = -0.85, p < 0.001        <- illustrative, not measured
 ```
 
 ## 🐛 Troubleshooting

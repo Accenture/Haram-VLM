@@ -46,6 +46,9 @@ computed offline from these files — no GPU needed to reproduce Table 1 or Fig.
 
 `adaptive_pareto_qwen3/` additionally supplies the qualitative examples in Fig. 6.
 
+Verified: `python controller/rank_based_compare.py` reproduces all twelve rows of Table 1
+(confidence and oracle columns) from these files alone — no GPU, no downloads.
+
 ## Learned risk head — `risk_head/`
 
 | Directory | Contents |

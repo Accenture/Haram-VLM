@@ -140,7 +140,9 @@ Scripts resolve paths from environment variables, all with sensible fallbacks:
 | `HF_HOME` | Hugging Face cache | `~/.cache/huggingface` |
 | `PYTHON` | interpreter used by the shell launchers | `python` |
 
-Every path is also overridable per-run via CLI flags. All scripts take `--help`.
+Every path is also overridable per-run via CLI flags — every script under
+`controller/`, `risk_head/`, and `protocol/` takes `--help`. The `figures/` scripts
+take no arguments and are driven entirely by `HARAM_RESULTS`/`HF_HOME`.
 
 ## Reproducing
 
@@ -154,8 +156,10 @@ python controller/adaptive_infer_internvl.py --help   # InternVL3-8B  (Table 1)
 python controller/adaptive_infer_phi3.py --help       # Phi-3-Vision  (Table 1)
 python controller/adaptive_infer_vstar.py --help      # V*Bench       (Table 3)
 
-# 3. Rank-based comparison: confidence vs learned vs oracle (Tables 1, 2)
-python controller/rank_based_compare.py --help
+# 3. Rank-based comparison: confidence vs learned vs oracle (Tables 1, 2).
+#    The confidence and oracle columns for all four architectures in Table 1
+#    reproduce from the committed results/ with NO GPU and no downloads:
+python controller/rank_based_compare.py
 
 # 4. The learned risk head (Table 2) and the richer-feature ablation (Table 7)
 python risk_head/dump_features_qwen3.py --help
@@ -178,7 +182,7 @@ bash figures/build.sh
   author = {Amirul Islam and Gyuhak Kim and Jiayun Wang},
   note   = {Center for Advanced AI, Accenture},
   year   = {2026},
-  url    = {https://github.com/samaonline/HARAM-VLM}
+  url    = {https://github.com/Accenture/Haram-VLM}
 }
 ```
 
