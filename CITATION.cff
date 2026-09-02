@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: "HARAM-VLM: Look Closer Only When Needed"
+message: >-
+  If you use this software, please cite it as below. It accompanies a manuscript
+  currently under review; the venue and DOI will be added once that concludes.
+type: software
+abstract: >-
+  A training-free, model-agnostic predict-then-allocate controller for
+  vision-language models. A cheap low-resolution scout pass answers a query and
+  estimates its own reliability; only uncertain queries are escalated to a
+  high-resolution pass. The controller is a single threshold on the scout's
+  confidence, adds no parameters, and wraps any frozen VLM. This repository also
+  releases a clean, scalable, image-disjoint COCO-to-POPE evaluation protocol
+  that removes the ~93 percent train-test contamination present in POPE-style
+  fine-tuning.
+authors:
+  - given-names: Amirul
+    family-names: Islam
+    affiliation: "Center for Advanced AI, Accenture"
+  - given-names: Gyuhak
+    family-names: Kim
+    affiliation: "Center for Advanced AI, Accenture"
+  - given-names: Jiayun
+    family-names: Wang
+    affiliation: "Center for Advanced AI, Accenture"
+repository-code: "https://github.com/samaonline/HARAM-VLM"
+license: Apache-2.0
+keywords:
+  - vision-language models
+  - adaptive resolution
+  - hallucination
+  - conditional computation
+  - benchmark contamination

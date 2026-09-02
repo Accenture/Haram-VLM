@@ -1,0 +1,81 @@
+HARAM-VLM
+Copyright 2026 Amirul Islam, Gyuhak Kim, Jiayun Wang
+Center for Advanced AI, Accenture
+
+This product includes software and data developed by third parties, redistributed
+here under their respective licenses.
+
+--------------------------------------------------------------------------------
+1. Phi3-Vision-Finetune
+--------------------------------------------------------------------------------
+The training scaffold under `haram_vlm/src/training/`, the serving code under
+`haram_vlm/src/serve/`, and the launcher scripts under `haram_vlm/scripts/`
+(finetune*.sh, merge_lora.sh, zero2*.json, zero3*.json) are derived from the
+Phi3-Vision-Finetune project:
+
+    https://github.com/2U1/Phi3-Vision-Finetune
+    Licensed under the Apache License, Version 2.0
+
+Modifications by the HARAM-VLM authors add hallucination-risk scoring,
+adaptive-resolution routing, and the risk-conditioned training path.
+
+--------------------------------------------------------------------------------
+2. Microsoft Phi-3 / Phi-3.5 Vision
+--------------------------------------------------------------------------------
+The vendored model implementations under
+`haram_vlm/src/model/Phi3_vision/` and
+`haram_vlm/src/model/Phi3_5_vision/` are:
+
+    Copyright 2024 Microsoft and the HuggingFace Inc. team. All rights reserved.
+    Licensed under the Apache License, Version 2.0
+
+These directories also contain tokenizer and preprocessor configuration files
+redistributed from the corresponding Hugging Face model repositories:
+
+    microsoft/Phi-3-vision-128k-instruct
+    microsoft/Phi-3.5-vision-instruct
+
+The Phi-3 *model weights* themselves are released by Microsoft under the MIT
+License and are NOT redistributed in this repository; they are downloaded from
+Hugging Face at run time.
+
+--------------------------------------------------------------------------------
+3. POPE benchmark
+--------------------------------------------------------------------------------
+POPE (Polling-based Object Probing Evaluation), MIT License
+
+    https://github.com/RUCAIBox/POPE
+
+POPE is NOT redistributed here. The exploratory harness under
+`exploratory/multi_model_eval/` downloads the split files on first run.
+
+No result reported in the paper uses the upstream POPE files at all: every
+evaluation uses the regenerated, image-disjoint probes produced by
+`protocol/generate_coco_pope.py`. Sec. 5 of the paper explains why -- training on
+POPE-derived data and evaluating on POPE leaks ~93% of evaluation pairs into
+training.
+
+--------------------------------------------------------------------------------
+4. Evaluation datasets (not redistributed)
+--------------------------------------------------------------------------------
+This repository contains code that evaluates against, but does not redistribute,
+the following datasets. Each remains under its own license:
+
+  - COCO 2014 (images + annotations) — Creative Commons Attribution 4.0;
+    images are subject to their respective Flickr terms.
+    https://cocodataset.org
+  - V*Bench (craigwu/vstar_bench) — see the dataset card on Hugging Face.
+    https://huggingface.co/datasets/craigwu/vstar_bench
+
+See DATA.md for how to obtain each of these.
+
+--------------------------------------------------------------------------------
+5. Methods reimplemented as baselines (exploratory only)
+--------------------------------------------------------------------------------
+`exploratory/decoding/` contains reimplementations, written from the published
+descriptions, of decoding-side hallucination mitigations used as baselines: VCD
+(Leng et al., CVPR 2024), DoLa (Chuang et al., 2024), OPERA (Huang et al., CVPR
+2024), and the CHAIR metric (Rohrbach et al., EMNLP 2018). Please cite the
+original papers if you use them. Absolute CHAIR values depend on the synonym
+list and parser, so only relative comparisons against this implementation are
+meaningful. None of these appear in the paper.

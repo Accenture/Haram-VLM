@@ -1,0 +1,102 @@
+{
+  "splits": {
+    "random": {
+      "confidence": {
+        "auroc": 0.9092468443932331,
+        "save_iso": 79.91312350450947,
+        "esc_pct": 9.0,
+        "high_acc": 0.962
+      },
+      "linear": {
+        "auroc": 0.8814836152865797,
+        "save_iso": 73.91208049573595,
+        "esc_pct": 15.0,
+        "high_acc": 0.962
+      },
+      "pca_mlp": {
+        "auroc": 0.8658627071003334,
+        "save_iso": 74.90441131357753,
+        "esc_pct": 14.000000000000002,
+        "high_acc": 0.962
+      },
+      "combined": {
+        "auroc": 0.9067633862323016,
+        "save_iso": 80.90318424443217,
+        "esc_pct": 8.0,
+        "high_acc": 0.962
+      },
+      "oracle": {
+        "auroc": 1.0,
+        "save_iso": 85.92109945395423,
+        "esc_pct": 3.0,
+        "high_acc": 0.962
+      }
+    },
+    "popular": {
+      "confidence": {
+        "auroc": 0.8370562542925825,
+        "save_iso": 70.88404196576477,
+        "esc_pct": 18.0,
+        "high_acc": 0.9135
+      },
+      "linear": {
+        "auroc": 0.8879609160370879,
+        "save_iso": 79.90324559788944,
+        "esc_pct": 9.0,
+        "high_acc": 0.9135
+      },
+      "pca_mlp": {
+        "auroc": 0.8917061941964286,
+        "save_iso": 78.90140499417141,
+        "esc_pct": 10.0,
+        "high_acc": 0.9135
+      },
+      "combined": {
+        "auroc": 0.8871131310096154,
+        "save_iso": 79.89355175164121,
+        "esc_pct": 9.0,
+        "high_acc": 0.9135
+      },
+      "oracle": {
+        "auroc": 1.0,
+        "save_iso": 85.90796981409903,
+        "esc_pct": 3.0,
+        "high_acc": 0.9135
+      }
+    },
+    "adversarial": {
+      "confidence": {
+        "auroc": 0.8074527051040215,
+        "save_iso": 49.89729431253451,
+        "esc_pct": 39.0,
+        "high_acc": 0.87
+      },
+      "linear": {
+        "auroc": 0.8915258755023374,
+        "save_iso": 63.90226394257317,
+        "esc_pct": 25.0,
+        "high_acc": 0.87
+      },
+      "pca_mlp": {
+        "auroc": 0.8915771344213893,
+        "save_iso": 67.89852138167987,
+        "esc_pct": 21.0,
+        "high_acc": 0.87
+      },
+      "combined": {
+        "auroc": 0.8717399327482982,
+        "save_iso": 61.893551751641205,
+        "esc_pct": 27.0,
+        "high_acc": 0.87
+      },
+      "oracle": {
+        "auroc": 1.0,
+        "save_iso": 77.91839990183446,
+        "esc_pct": 11.0,
+        "high_acc": 0.87
+      }
+    }
+  },
+  "pca_k": 128,
+  "n_train": 3000
+}

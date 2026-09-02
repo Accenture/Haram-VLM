@@ -1,0 +1,74 @@
+[pope_test_adversarial.json] loading model on 4 ...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.17it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 11.90it/s]
+<env>/lib/python3.10/site-packages/transformers/models/auto/image_processing_auto.py:513: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+  warnings.warn(
+The `seen_tokens` attribute is deprecated and will be removed in v4.41. Use the `cache_position` model input instead.
+<repo>/haram_vlm_implementation/src/model/Phi3_vision/image_embedding_phi3_v.py:197: UserWarning: Phi-3-V modifies `input_ids` in-place and the tokens indicating images will be removed after model forward. If your workflow requires multiple forward passes on the same `input_ids`, please make a copy of `input_ids` before passing it to the model.
+  warnings.warn(
+You are not running the flash-attention implementation, expect numerical differences.
+  100/6000  (57s, 1.8 q/s)
+  200/6000  (114s, 1.8 q/s)
+  300/6000  (169s, 1.8 q/s)
+  400/6000  (224s, 1.8 q/s)
+  500/6000  (279s, 1.8 q/s)
+  600/6000  (336s, 1.8 q/s)
+  700/6000  (393s, 1.8 q/s)
+  800/6000  (452s, 1.8 q/s)
+  900/6000  (511s, 1.8 q/s)
+  1000/6000  (567s, 1.8 q/s)
+  1100/6000  (621s, 1.8 q/s)
+  1200/6000  (677s, 1.8 q/s)
+  1300/6000  (733s, 1.8 q/s)
+  1400/6000  (790s, 1.8 q/s)
+  1500/6000  (847s, 1.8 q/s)
+  1600/6000  (906s, 1.8 q/s)
+  1700/6000  (964s, 1.8 q/s)
+  1800/6000  (1019s, 1.8 q/s)
+  1900/6000  (1078s, 1.8 q/s)
+  2000/6000  (1135s, 1.8 q/s)
+  2100/6000  (1191s, 1.8 q/s)
+  2200/6000  (1248s, 1.8 q/s)
+  2300/6000  (1305s, 1.8 q/s)
+  2400/6000  (1363s, 1.8 q/s)
+  2500/6000  (1418s, 1.8 q/s)
+  2600/6000  (1474s, 1.8 q/s)
+  2700/6000  (1532s, 1.8 q/s)
+  2800/6000  (1590s, 1.8 q/s)
+  2900/6000  (1648s, 1.8 q/s)
+  3000/6000  (1705s, 1.8 q/s)
+  3100/6000  (1762s, 1.8 q/s)
+  3200/6000  (1820s, 1.8 q/s)
+  3300/6000  (1875s, 1.8 q/s)
+  3400/6000  (1930s, 1.8 q/s)
+  3500/6000  (1986s, 1.8 q/s)
+  3600/6000  (2042s, 1.8 q/s)
+  3700/6000  (2098s, 1.8 q/s)
+  3800/6000  (2155s, 1.8 q/s)
+  3900/6000  (2210s, 1.8 q/s)
+  4000/6000  (2265s, 1.8 q/s)
+  4100/6000  (2319s, 1.8 q/s)
+  4200/6000  (2376s, 1.8 q/s)
+  4300/6000  (2431s, 1.8 q/s)
+  4400/6000  (2490s, 1.8 q/s)
+  4500/6000  (2549s, 1.8 q/s)
+  4600/6000  (2605s, 1.8 q/s)
+  4700/6000  (2664s, 1.8 q/s)
+  4800/6000  (2722s, 1.8 q/s)
+  4900/6000  (2776s, 1.8 q/s)
+  5000/6000  (2834s, 1.8 q/s)
+  5100/6000  (2888s, 1.8 q/s)
+  5200/6000  (2945s, 1.8 q/s)
+  5300/6000  (2999s, 1.8 q/s)
+  5400/6000  (3054s, 1.8 q/s)
+  5500/6000  (3113s, 1.8 q/s)
+  5600/6000  (3169s, 1.8 q/s)
+  5700/6000  (3223s, 1.8 q/s)
+  5800/6000  (3278s, 1.8 q/s)
+  5900/6000  (3333s, 1.8 q/s)
+  6000/6000  (3383s, 1.8 q/s)
+
+[pope_test_adversarial.json] DONE in 3383s
+  overall: {'n': 6000, 'accuracy': 0.8872, 'precision': 0.8746, 'recall': 0.904, 'f1': 0.889, 'yes_ratio': 0.5168, 'tp': 2712, 'tn': 2611, 'fp': 389, 'fn': 288, 'unk': 0}
+  seen   : {'n': 92, 'accuracy': 0.8913, 'precision': 0.86, 'recall': 0.9348, 'f1': 0.8958, 'yes_ratio': 0.5435, 'tp': 43, 'tn': 39, 'fp': 7, 'fn': 3, 'unk': 0}
+  unseen : {'n': 5908, 'accuracy': 0.8871, 'precision': 0.8748, 'recall': 0.9035, 'f1': 0.8889, 'yes_ratio': 0.5164, 'tp': 2669, 'tn': 2572, 'fp': 382, 'fn': 285, 'unk': 0}
+  -> <work>/pope_eval_oldbaseline/pope_adversarial.json

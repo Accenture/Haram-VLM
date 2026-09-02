@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights: 100%|██████████| 750/750 [00:00<00:00, 10627.39it/s]
+[pope_test_random.json] 2000 probes | Qwen/Qwen3-VL-8B-Instruct | tokens 128->1024 | yes=[7414, 9454, 9693, 9834, 14004] no=[902, 2152, 2308, 2753, 8996]
+  200/2000 (95s)
+  400/2000 (187s)
+  600/2000 (278s)
+  800/2000 (366s)
+  1000/2000 (453s)
+  1200/2000 (540s)
+  1400/2000 (630s)
+  1600/2000 (721s)
+  1800/2000 (810s)
+  2000/2000 (895s)
+  always-low : acc=0.939 tok=90
+  always-high: acc=0.962 tok=815
+  ADAPTIVE   : acc=0.962 tok=905 esc=100% (--11% tok, tau=1.0)
+  -> <work>/adaptive_pareto_qwen3/adaptive_random.json

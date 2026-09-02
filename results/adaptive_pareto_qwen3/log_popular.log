@@ -1,0 +1,18 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:  79%|███████▉  | 592/750 [00:00<00:00, 5918.95it/s]Loading weights: 100%|██████████| 750/750 [00:00<00:00, 6708.37it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[pope_test_popular.json] 2000 probes | Qwen/Qwen3-VL-8B-Instruct | tokens 128->1024 | yes=[7414, 9454, 9693, 9834, 14004] no=[902, 2152, 2308, 2753, 8996]
+  200/2000 (93s)
+  400/2000 (184s)
+  600/2000 (275s)
+  800/2000 (367s)
+  1000/2000 (457s)
+  1200/2000 (549s)
+  1400/2000 (637s)
+  1600/2000 (728s)
+  1800/2000 (819s)
+  2000/2000 (901s)
+  always-low : acc=0.896 tok=90
+  always-high: acc=0.913 tok=815
+  ADAPTIVE   : acc=0.913 tok=905 esc=100% (--11% tok, tau=1.0)
+  -> <work>/adaptive_pareto_qwen3/adaptive_popular.json

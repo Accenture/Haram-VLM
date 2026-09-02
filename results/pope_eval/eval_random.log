@@ -1,0 +1,44 @@
+[coco_pope_random.json] loading model on 2 ...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.02it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 11.29it/s]
+<env>/lib/python3.10/site-packages/transformers/models/auto/image_processing_auto.py:513: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+  warnings.warn(
+The `seen_tokens` attribute is deprecated and will be removed in v4.41. Use the `cache_position` model input instead.
+<repo>/haram_vlm_implementation/src/model/Phi3_vision/image_embedding_phi3_v.py:197: UserWarning: Phi-3-V modifies `input_ids` in-place and the tokens indicating images will be removed after model forward. If your workflow requires multiple forward passes on the same `input_ids`, please make a copy of `input_ids` before passing it to the model.
+  warnings.warn(
+You are not running the flash-attention implementation, expect numerical differences.
+  100/3000  (139s, 0.7 q/s)
+  200/3000  (221s, 0.9 q/s)
+  300/3000  (275s, 1.1 q/s)
+  400/3000  (332s, 1.2 q/s)
+  500/3000  (387s, 1.3 q/s)
+  600/3000  (440s, 1.4 q/s)
+  700/3000  (495s, 1.4 q/s)
+  800/3000  (550s, 1.5 q/s)
+  900/3000  (605s, 1.5 q/s)
+  1000/3000  (661s, 1.5 q/s)
+  1100/3000  (715s, 1.5 q/s)
+  1200/3000  (772s, 1.6 q/s)
+  1300/3000  (829s, 1.6 q/s)
+  1400/3000  (882s, 1.6 q/s)
+  1500/3000  (938s, 1.6 q/s)
+  1600/3000  (995s, 1.6 q/s)
+  1700/3000  (1050s, 1.6 q/s)
+  1800/3000  (1103s, 1.6 q/s)
+  1900/3000  (1157s, 1.6 q/s)
+  2000/3000  (1211s, 1.7 q/s)
+  2100/3000  (1265s, 1.7 q/s)
+  2200/3000  (1316s, 1.7 q/s)
+  2300/3000  (1369s, 1.7 q/s)
+  2400/3000  (1424s, 1.7 q/s)
+  2500/3000  (1478s, 1.7 q/s)
+  2600/3000  (1533s, 1.7 q/s)
+  2700/3000  (1592s, 1.7 q/s)
+  2800/3000  (1643s, 1.7 q/s)
+  2900/3000  (1689s, 1.7 q/s)
+  3000/3000  (1723s, 1.7 q/s)
+
+[coco_pope_random.json] DONE in 1723s
+  overall: {'n': 3000, 'accuracy': 0.9343, 'precision': 0.9637, 'recall': 0.9027, 'f1': 0.9322, 'yes_ratio': 0.4683, 'tp': 1354, 'tn': 1449, 'fp': 51, 'fn': 146, 'unk': 0}
+  seen   : {'n': 2718, 'accuracy': 0.9319, 'precision': 0.9712, 'recall': 0.903, 'f1': 0.9359, 'yes_ratio': 0.5114, 'tp': 1350, 'tn': 1183, 'fp': 40, 'fn': 145, 'unk': 0}
+  unseen : {'n': 282, 'accuracy': 0.9574, 'precision': 0.2667, 'recall': 0.8, 'f1': 0.4, 'yes_ratio': 0.0532, 'tp': 4, 'tn': 266, 'fp': 11, 'fn': 1, 'unk': 0}
+  -> <work>/pope_eval/pope_random.json

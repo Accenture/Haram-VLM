@@ -1,0 +1,21 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  6.55it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  8.51it/s]
+<env>/lib/python3.10/site-packages/transformers/models/auto/image_processing_auto.py:513: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+  warnings.warn(
+[pope_test_random.json] 2000 probes | crops 4->16
+<repo>/haram_vlm_implementation/src/model/Phi3_vision/image_embedding_phi3_v.py:197: UserWarning: Phi-3-V modifies `input_ids` in-place and the tokens indicating images will be removed after model forward. If your workflow requires multiple forward passes on the same `input_ids`, please make a copy of `input_ids` before passing it to the model.
+  warnings.warn(
+You are not running the flash-attention implementation, expect numerical differences.
+  200/2000 (161s)
+  400/2000 (316s)
+  600/2000 (470s)
+  800/2000 (623s)
+  1000/2000 (774s)
+  1200/2000 (928s)
+  1400/2000 (1078s)
+  1600/2000 (1231s)
+  1800/2000 (1382s)
+  2000/2000 (1535s)
+  always-low : acc=0.868 halluc=1.1% tok=774
+  always-high: acc=0.910 halluc=2.0% tok=2031
+  adaptive@acc~high: tau=0.9 acc=0.905 halluc=1.6% tok=1396 esc_rate=0.31
+  -> <work>/adaptive_pareto_base/adaptive_random.json

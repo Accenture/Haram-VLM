@@ -1,0 +1,73 @@
+# HARAM-VLM Requirements for Qwen3-VL Support
+# Python 3.9+ required
+
+# Core Deep Learning - UPDATED for Qwen3-VL
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.57.0  # CRITICAL: Minimum version for Qwen3-VL support
+accelerate>=0.25.0
+peft>=0.7.0  # For LoRA implementation
+
+# Vision Models
+timm>=0.9.0  # PyTorch Image Models
+opencv-python>=4.8.0
+pillow>=10.0.0
+albumentations>=1.3.0
+
+# Flash Attention for Qwen3-VL (optional but recommended)
+# Uncomment if you have CUDA 11.6+
+# flash-attn>=2.3.0
+
+# Model Optimization
+onnx>=1.15.0
+onnxruntime>=1.16.0
+# tensorrt>=8.6.0  # Optional, for deployment optimization
+bitsandbytes>=0.41.0  # For quantization
+
+# Dataset Handling
+datasets>=2.15.0
+pycocotools>=2.0.7
+
+# Evaluation Metrics
+sacrebleu>=2.3.0
+rouge-score>=0.1.2
+nltk>=3.8.0
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# Experiment Tracking
+wandb>=0.16.0
+tensorboard>=2.15.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.13.0
+plotly>=5.18.0
+
+# Development Tools
+jupyter>=1.0.0
+ipykernel>=6.26.0
+tqdm>=4.66.0
+pytest>=7.4.0
+black>=23.11.0
+isort>=5.12.0
+flake8>=6.1.0
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.1.0
+pyyaml>=6.0.1
+jsonlines>=4.0.0
+python-dotenv>=1.0.0
+click>=8.1.0
+rich>=13.7.0  # For beautiful CLI output
+
+# Advanced features
+einops>=0.7.0  # For tensor operations
+safetensors>=0.4.0  # For safe model serialization
+
+# Distributed training (optional)
+# deepspeed>=0.12.0  # Uncomment if needed
+
+# Qwen3-VL specific (if available)
+# qwen-vl-utils>=0.2.0  # May be required for some Qwen3 features

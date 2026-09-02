@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Model weights and large artifacts — published as release assets / on the Hub.
+# See DATA.md.
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.engine
+*.npz
+*.ckpt
+optimizer.pt
+scheduler.pt
+rng_state*.pth
+
+# Training output trees
+output/
+work/
+checkpoints/
+runs/
+wandb/
+events.out.tfevents.*
+
+# Environment packs — never commit these
+*.tar.gz
+*.tar
+*.zip
+env_pack/
+
+# Datasets (see DATA.md -- none of these are redistributable)
+coco_build/
+data/coco/
+data/images/
+exploratory/multi_model_eval/data/
+exploratory/multi_model_eval/model_cache/
+exploratory/multi_model_eval/validation_results/
+validation_results/
+benchmarks/
+*.jsonl.gz
+
+# Credentials — nothing in this repo should ever need these
+*.pem
+*.key
+id_rsa*
+.env
+.env.*
+.huggingface/
+.claude/settings.local.json
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+
+# ...but keep the captured eval stdout: it backs the paper numbers.
+!results/**/*.log
+*.blg
+*.bbl
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+
+# OS
+.DS_Store
+Thumbs.db
